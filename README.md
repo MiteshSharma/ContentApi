@@ -21,3 +21,11 @@ Step 5: Go to browser or terminal to check for http://localhost:9000 host port. 
 Step 6: If you want to deploy this on production and want to create a distribution file then run: ./activator dist
 
 No UI code is added to this code as not had all rights to open source it. Although i used angularjs for this project.
+
+Database used:
+=================================
+Mongo database is used in this project, as it is flexible and any number of columns can be added in it dynamically. If needed any different database can code can be used just by changing code in repository folder.
+
+Play Framework:
+=================================
+Play framework tutorial for better understanding : https://www.slideshare.net/mitesh_sharma/play-framework-a-walkthrough 
