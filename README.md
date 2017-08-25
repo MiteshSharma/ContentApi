@@ -24,8 +24,19 @@ No UI code is added to this code as not had all rights to open source it. Althou
 
 Database used:
 =================================
-Mongo database is used in this project, as it is flexible and any number of columns can be added in it dynamically. If needed any different database can code can be used just by changing code in repository folder.
+Mongo database is used in this project, as it is flexible and any number of columns can be added in it dynamically. If needed any different database can code can be used just by changing code in repository folder. We are using one master and one shard database for better manageability of content, whose configration can be updated in conf/application.conf file.
+
+Media Upload
+================================
+Media upload is being done on S3. Right aws configration can be added in conf/application.conf file.
 
 Play Framework:
 =================================
 Play framework tutorial for better understanding : https://www.slideshare.net/mitesh_sharma/play-framework-a-walkthrough 
+
+Video (ContentApi backend with frontend)
+=================================
+![Contet API web server](https://img.youtube.com/vi/UKPuEffJJ1A/0.jpg)
+
+Click Here to view video : https://youtu.be/UKPuEffJJ1A
+
