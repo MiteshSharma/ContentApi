@@ -1,0 +1,32 @@
+<!-- https://www.playframework.com/documentation/latest/SettingsLogger -->
+<configuration>
+
+  <conversionRule conversionWord="coloredLevel" converterClass="play.api.Logger$ColoredLevel" />
+
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>${application.home:-.}/logs/application.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- Daily rollover with compression -->
+      <fileNamePattern>application-log-%d{yyyy-MM-dd}.gz</fileNamePattern>
+      <!-- keep 30 days worth of history -->
+      <maxHistory>7</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%date{YYYYMMDDHHMMSS} %coloredLevel %logger{15} %thread %C %M %X{userId:--} %X{routes:--} "%message"%n%xException </pattern>
+    </encoder>
+  </appender>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%date{YYYYMMDDHHMMSS} %coloredLevel %logger{15} %thread %C %M %X{userId:--} %X{routes:--} "%message"%n%xException </pattern>
+    </encoder>
+  </appender>
+
+  <logger name="play" level="INFO" />
+  <logger name="application" level="INFO" />
+
+  <root level="INFO">
+    <appender-ref ref="STDOUT"/>
+  </root>
+
+</configuration>

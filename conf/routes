@@ -1,0 +1,81 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# SEO related content
+#GET     /robots.txt                  controllers.Assets.at(path="/public", file="/seo/robots.txt")
+#GET     /sitemap.xml                 controllers.Assets.at(path="/public", file="/seo/sitemap.xml")
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+# Commenting this as not adding ui code with this project
+GET     /                           controllers.MainController.index
+#GET     /dashboard                  controllers.AppViewController.index
+
+#External api function
+-> /                                api.Routes
+
+#User related
+POST    /api/v1/user                      controllers.UserController.create()
+PUT     /api/v1/user                      controllers.UserController.update()
+GET     /api/v1/user                      controllers.UserController.get()
+
+POST    /api/v1/userRegister              controllers.UserRegistrationController.create()
+DELETE  /api/v1/userRegister              controllers.UserRegistrationController.delete()
+
+POST    /api/v1/userPasswordReset/:email  controllers.UserPasswordResetController.create(email: String, projectId: String?=null)
+PUT     /api/v1/userPasswordReset         controllers.UserPasswordResetController.update()
+
+#Team related
+POST    /api/v1/team/:teamId/member                  controllers.TeamMemberController.create(teamId: String)
+DELETE  /api/v1/team/:teamId/member/:memberId        controllers.TeamMemberController.delete(teamId: String, memberId: String)
+
+#Project related
+GET     /api/v1/project/                    controllers.ProjectController.getAll()
+GET     /api/v1/project/:projectId          controllers.ProjectController.get(projectId: String)
+POST    /api/v1/project/                    controllers.ProjectController.create()
+PUT     /api/v1/project/:projectId          controllers.ProjectController.update(projectId: String)
+
+#Project webhook events
+GET     /api/v1/project/:projectId/webhookEvents/       controllers.WebhookEventController.getAll(projectId: String)
+
+#Project api key
+GET     /api/v1/project/:projectId/env/:envId/key/      controllers.ProjectApiKeyController.get(projectId: String, envId: String)
+
+#Environment related
+POST    /api/v1/project/:projectId/environment/                 controllers.EnvironmentController.create(projectId: String)
+
+#Invite member in project team
+POST    /api/v1/project/:projectId/invite/                 controllers.TeamInviteController.create(projectId: String)
+
+#Collection related routes
+GET     /api/v1/project/:projectId/collection/                   controllers.CollectionController.getAll(projectId: String)
+GET     /api/v1/project/:projectId/collection/:collectionId     controllers.CollectionController.get(projectId: String, collectionId: String)
+POST    /api/v1/project/:projectId/collection/                   controllers.CollectionController.create(projectId: String)
+#PUT     /api/v1/project/:projectId/collection/:collectionId     controllers.CollectionController.update(projectId: String, collectionId: String)
+
+#Field related
+POST   /api/v1/project/:projectId/collection/:collectionId/field/             controllers.FieldController.create(projectId: String, collectionId: String)
+DELETE /api/v1/project/:projectId/collection/:collectionId/field/:fieldId    controllers.FieldController.delete(projectId: String, collectionId: String, fieldId: String)
+
+#Collection content related routes
+GET     /api/v1/project/:projectId/collection/:collectionId/env/:envId/content/                controllers.CollectionDataController.getAll(projectId: String, collectionId: String, envId: String)
+GET     /api/v1/project/:projectId/collection/:collectionId/env/:envId/content/:contentId     controllers.CollectionDataController.get(projectId: String, collectionId: String, envId: String, contentId: String)
+POST    /api/v1/project/:projectId/collection/:collectionId/env/:envId/content/                controllers.CollectionDataController.create(projectId: String, collectionId: String, envId: String)
+PUT     /api/v1/project/:projectId/collection/:collectionId/env/:envId/content/:contentId     controllers.CollectionDataController.update(projectId: String, collectionId: String, envId: String, contentId: String)
+
+# Upload files
+POST    /api/v1/project/:projectId/file          controllers.UploadController.create(projectId: String)
+
+# Media related
+GET    /api/v1/project/:projectId/media/         controllers.MediaController.getAll(projectId: String)
+POST   /api/v1/project/:projectId/media/         controllers.MediaController.create(projectId: String)
+DELETE /api/v1/project/:projectId/media/:mediaId controllers.MediaController.delete(projectId: String, mediaId: String)
+
+#Project api key
+GET     /api/v1/project/:projectId/webhook/      controllers.WebhookController.getAll(projectId: String)
+POST    /api/v1/project/:projectId/webhook/      controllers.WebhookController.create(projectId: String)
+
+# Add for newsletter
+POST    /api/v1/newsletter                       controllers.NewsletterController.create()

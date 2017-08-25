@@ -1,0 +1,30 @@
+# Routes
+# This file defines all external api routes
+# ~~~~
+
+#User related
+POST    /user                      controllers.external.ExternalUserController.create()
+PUT     /user                      controllers.external.ExternalUserController.update()
+GET     /user                      controllers.external.ExternalUserController.get()
+
+POST    /userRegister              controllers.external.ExternalUserRegistrationController.create()
+DELETE  /userRegister              controllers.external.ExternalUserRegistrationController.delete()
+
+#Collection related routes
+GET     /collection/                controllers.external.ExternalCollectionController.getAll()
+GET     /collection/:collectionId   controllers.external.ExternalCollectionController.get(collectionId: String)
+
+
+#Collection content related routes
+GET     /collection/:collectionId/content/               controllers.external.ExternalCollectionDataController.getAll(collectionId: String)
+GET     /collection/:collectionId/content/:contentId     controllers.external.ExternalCollectionDataController.get(collectionId: String, contentId: String)
+POST    /collection/:collectionId/content/               controllers.external.ExternalCollectionDataController.create(collectionId: String)
+PUT     /collection/:collectionId/content/:contentId     controllers.external.ExternalCollectionDataController.update(collectionId: String, contentId: String)
+
+# Upload files
+POST    /file          controllers.external.ExternalUploadController.create()
+
+# Media related
+GET    /media/         controllers.external.ExternalMediaController.getAll()
+POST   /media/         controllers.external.ExternalMediaController.create()
+DELETE /media/:mediaId controllers.external.ExternalMediaController.delete(mediaId: String)
