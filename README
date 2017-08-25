@@ -1,49 +1,18 @@
-This is your new Play application
+Content API
 =================================
 
-This file will be packaged with your application when using `activator dist`.
+This is a web service which backend as a service which support both static and dynamic content written in java using Play Framework.
+In this service, we can create any collection, define its properties with constraints. During adding content in collection, validation is done to make sure right content is going in system. Content can be added dynamically using REST Apis and fetched by providing right auth token.
+No UI is added in this code as i didn't have all rights to do that.
 
-There are several demonstration files available in this template.
+How to run this:
+=================================
 
-Controllers
-===========
+Step 1: Clone this project using : git clone https://github.com/MiteshSharma/ContentApi.git
+Step 2: Go to folder ContentApi which is created after cloing project.
+Step 3: Run ./activator clean compile to compile project. You can find any compilation errors if any. This is an optional step.
+Step 4: Run ./activator run to run this project. Default port is 9000 on this this web service will run.
+Step 5: Go to browser or terminal to check for http://localhost:9000 host port. If this runs successfully, this means project is running properly.
+Step 6: If you want to deploy this on production and want to create a distribution file then run: ./activator dist
 
-- HomeController.java:
-
-  Shows how to handle simple HTTP requests.
-
-- AsyncController.java:
-
-  Shows how to do asynchronous programming when handling a request.
-
-- CountController.java:
-
-  Shows how to inject a component into a controller and use the component when
-  handling requests.
-
-Components
-==========
-
-- Module.java:
-
-  Shows how to use Guice to bind all the components needed by your application.
-
-- Counter.java:
-
-  An example of a component that contains state, in this case a simple counter.
-
-- ApplicationTimer.java:
-
-  An example of a component that starts when the application starts and stops
-  when the application stops.
-
-filters.Filters
-=======
-
-- filters.Filters.java:
-
-  Creates the list of HTTP filters used by your application.
-
-- ExampleFilter.java
-
-  A simple filter that adds a header to every response.
+No UI code is added to this code as not had all rights to open source it. Although i used angularjs for this project.
